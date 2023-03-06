@@ -1,0 +1,22 @@
+{
+  "name": "transcriptus",
+  "version": "1.0.0",
+  "description": "translate your english text into its phonetic transcrition",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "gtts": "^0.2.1",
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
