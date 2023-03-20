@@ -7,3 +7,5 @@ Transcrição da pronúncia de palavras em inglês
 4. Tradução: exibe uma tradução simples da palavra digitada
 5. Verbete: Sistema de palavras diárias, ajudando a enriquecer o vocabulário do usuário
 6. Input bilingue: possibilidade de entrada do usuário em português, permitindo que usuários sem muito conhecimento da lingua possam utilizar a ferrameta com mais facilidade
+
+Product backlog: https://docs.google.com/spreadsheets/d/1YWYaDGhJ8LquLU6CQVPLazk0BrflZmY7rFSaJ6laq9U/edit?usp=sharing
