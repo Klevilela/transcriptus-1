@@ -9,3 +9,4 @@ Transcrição da pronúncia de palavras em inglês
 6. Input bilingue: possibilidade de entrada do usuário em português, permitindo que usuários sem muito conhecimento da lingua possam utilizar a ferrameta com mais facilidade
 
 Product backlog: https://docs.google.com/spreadsheets/d/1YWYaDGhJ8LquLU6CQVPLazk0BrflZmY7rFSaJ6laq9U/edit?usp=sharing
+Apresentação: https://drive.google.com/file/d/1DPWEhVNFA4uzMzO0OGxa5OMcrlj4pd_Z/view
