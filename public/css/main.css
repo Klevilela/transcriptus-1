@@ -1,0 +1,47 @@
+.animate__animated {
+  animation-duration: 1s;
+}
+
+.animate__fadeInDown {
+  animation-name: animate__fadeInDown;
+}
+
+.animate__fadeInUp {
+  animation-name: animate__fadeInUp;
+}
+
+.animate__fadeIn {
+  animation-name: animate__fadeIn;
+}
+
+body {
+  background: linear-gradient(
+    90deg,
+    rgba(158, 167, 161, 1) 0%,
+    rgba(0, 255, 132, 1) 100%,
+    rgba(15, 208, 170, 0.9416141456582633) 136%,
+    rgba(2, 0, 36, 1) 136%,
+    rgba(136, 135, 129, 1) 136%
+  );
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans&family=Outfit&family=Ubuntu:wght@300&display=swap");
+.container-lg .title {
+  text-align: center;
+  font-family: "Bebas Neue";
+  font-size: 180%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: white;
+}
+
+.animate__animated {
+  text-align: center;
+}
+
+.form-control {
+  border-color: lightgreen;
+  border-style: groove;
+  border-style: solid;
+  border-width: 5px;
+}
