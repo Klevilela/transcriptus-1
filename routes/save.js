@@ -3,7 +3,7 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const openai = require("../controllers/openaiController");
 const dictOp = require("../controllers/operationsController");
-const Phrase = require("../controllers/reversoController");
+const reverso = require("../controllers/reversoController");
 const gAudio = require("../controllers/audioController");
 
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -14,8 +14,8 @@ router.post("/text/save", async (req, res) => {
   let text = req.body.text.toLowerCase();
   let originalText = text;
   await gAudio.generateAudio(text);
-  const translation = await Phrase.generateTranslate(text);
-  const phrases = await Phrase.generatePhrase(text);
+  const translation = await reverso.generateTranslate(text);
+  const phrases = await reverso.generatePhrase(text);
   const urlImage = await openai.generateImage(text);
 
   // traslating IPA to words
