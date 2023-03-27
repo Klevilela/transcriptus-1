@@ -2,7 +2,7 @@ const Reverso = require("reverso-api");
 const reverso = new Reverso();
 
 // generate phrases in english and portuguese
-const generatePhrase = async (word) => {
+const generatePhrase = (word) => {
   return new Promise((resolve, reject) => {
     reverso.getContext(word, "english", "portuguese", (err, response) => {
       if (err) {
@@ -18,4 +18,16 @@ const generatePhrase = async (word) => {
   });
 };
 
-module.exports = { generatePhrase };
+// generate translations to pt
+const generateTranslate = (word) => {
+  return new Promise((resolve, reject) => {
+    reverso.getTranslation(word, "english", "portuguese", (err, response) => {
+      if (err) reject(err);
+
+      const translations = [...new Set(response.translations)];
+      resolve(translations);
+    });
+  });
+};
+
+module.exports = { generatePhrase, generateTranslate };
