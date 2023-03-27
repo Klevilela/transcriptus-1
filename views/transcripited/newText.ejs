@@ -17,9 +17,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
     />
 
-    <!-- script do responsiveVoice -->
-    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
-
     <style>
       /* Animations */
       @keyframes fadeIn {
@@ -78,43 +75,52 @@
           <h2>Texto em forma fonética</h2>
         </div>
         <div class="card-body"><%= text %></div>
+        <div class="card-header">
+          <h2>Tradução</h2>
+        </div>
+        <div class="card-body">
+          <ul>
+            <% translation.forEach(function(word){ %>
+            <button class="btn btn-primary"><%= word %></button>
+            <% }) %>
+          </ul>
+        </div>
+
         <div class="card-header"><h2>Pronúncia</h2></div>
         <div class="card-body"><%= engWord %></div>
-        <hr>
-        <br>
+
+        <hr />
+        <br />
         <section class="image">
           <div class="image-container">
             <img src="<%= urlImage  %>" />
           </div>
         </section>
-        <br>
+        <br />
         <audio controls>
-          <source src="<%= audio %>" type="audio/mp3">
-          <source src="<%= audio %>" type="audio/mpeg">
+          <source src="<%= audio %>" type="audio/mp3" />
+          <source src="<%= audio %>" type="audio/mpeg" />
           Seu navegador não suporta a tag de áudio.
         </audio>
-        
         <div class="card-header">
           <h2>Contexto</h2>
         </div>
         <div class="card-body">
-
           <% phrases.forEach(function(phrase) { %>
           <div class="row">
-              <hr>
-              <%= phrase.english %><br>
-              <%= phrase.portuguese %>
-              <hr>
-          </div> 
-          <% }); %>
-            
+            <div class="col-sm-6">
+              <%- phrase.english.replace(originalText, `<strong>
+                ${originalText} </strong
+              >`) %>
+            </div>
+            <div class="col-sm-6"><%= phrase.portuguese %></div>
           </div>
+          <hr />
+          <% }); %>
         </div>
+
         <br />
-        
 
-
-      
         <!-- Link de volta para a página principal -->
         <a
           href="/"
@@ -126,8 +132,4 @@
     </div>
   </body>
   <script src="/js/bootstrap.min.js"></script>
-
-  <script>
-    let palavra = "<%= audio %>";
-  </script>
 </html>
