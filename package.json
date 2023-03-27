@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "translate your english text into its phonetic transcrition",
   "main": "index.js",
+  "type":"module",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
