@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "translate your english text into its phonetic transcrition",
   "main": "index.js",
-  "type":"module",
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -15,6 +14,7 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "gtts": "^0.2.1",
+    "nodemon": "^2.0.22",
     "openai": "^3.2.1",
     "reverso-api": "^2.22.3"
   },
