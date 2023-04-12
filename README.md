@@ -10,4 +10,4 @@ Transcrição da pronúncia de palavras em inglês
 
 Product backlog: https://docs.google.com/spreadsheets/d/1YWYaDGhJ8LquLU6CQVPLazk0BrflZmY7rFSaJ6laq9U/edit?usp=sharing
 Apresentação: https://drive.google.com/file/d/1DPWEhVNFA4uzMzO0OGxa5OMcrlj4pd_Z/view
-mainframe: https://drive.google.com/file/d/1E0inOGU6L0sBofn4bccD-dd5kWLOQ8lF/view?pli=1
+wireframe: https://drive.google.com/file/d/1E0inOGU6L0sBofn4bccD-dd5kWLOQ8lF/view?pli=1
