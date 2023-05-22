@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: large;
+}
+
+a:hover{
+    opacity: 0.7;
+    
+}
+
+.logo{
+    font-size: 24px;
+    text-transform: uppercase;
+
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    background: #43b97e;
+}
+
+.nav_list{
+    list-style: none;
+    display: flex;
+}
+
+.nav_list li{
+    letter-spacing: 3px;
+    margin-left: 32px;
+}
+
+aside{
+    box-sizing: border-box;
+    text-align: right;
+}
+
+p{text-align: justify;}
