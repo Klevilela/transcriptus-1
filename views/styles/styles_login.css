@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: auto;
+}    
+
+body{background-color: #D9D9D9;}
+
+.container{
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    max-width: fit-content;
+    height: fit-content;
+}
+
+.card_login{
+    background-color: #fff;
+    width: 500px;
+    height: 400px;
+    align-items: center;
+    padding: auto;
+    margin: 3em;
+}
+
+.card_login .title{
+    font-family: 'inter';
+    text-align: center;
+}
+
+.label{
+    padding-left: 2em;
+    font-size: 20px;
+}
+
+.container .input{
+    margin-left: 2em;
+    align-items: center;
+    width: 300px;
+}
+
