@@ -6,6 +6,7 @@ const openai = require("./image/openaiController");
 const dictOp = require("./dict/operationsDict");
 const gAudio = require("./dict/audioGenerator");
 const { render } = require("ejs");
+const routerSave = require("./routes/save");
 
 const port = process.env.PORT || 3000;
 
@@ -25,7 +26,6 @@ app.get("/", (req, res) => {
 app.get("/home", function (req, res){
   res.render(__dirname+"/home")
 })
-
 app.get("/login", function (req, res){
   res.render("login")
 })
@@ -52,6 +52,3 @@ app.post("/text/save", async (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`server running at localhost: ${port}`);
-});

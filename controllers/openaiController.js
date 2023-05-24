@@ -4,7 +4,6 @@ require("dotenv").config();
 // local to import API key
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
-  // apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
@@ -24,7 +23,6 @@ const generateImage = async (prompt) => {
 
     // url da imagem gerada
     const imageUrl = response.data.data[0].url;
-    console.log(imageUrl);
     return imageUrl;
     // res.status(200).json({ success: true, data: imageUrl });
   } catch (error) {

@@ -44,69 +44,76 @@ const findWord = (word) => {
 };
 
 // Translate an IPA text to English words
-const translateWord = (wordIPA) => {
-  let wordEn = "";
+const translateWord = (word) => {
+  try {
+    let wordIPA = findWord(word);
 
-  const ipaToEn = {
-    b: "b",
-    l: "l",
-    ʌ: "uh",
-    d: "d",
-    dʒ: "g",
-    θ: "th",
-    h: "rr",
-    e: "e",
-    æ: "a",
-    p: "p",
-    y: "i",
-    i: "ee",
-    aɪ: "ai",
-    oʊ: "ow",
-    ʊ: "uh",
-    aʊ: "au",
-    u: "uw",
-    ɔɪ: "ói",
-    ə: "á",
-    k: "k",
-    m: "m",
-    n: "n",
-    s: "s",
-    v: "v",
-    t: "t",
-    ɛ: "é",
-    ɔ: "ao",
-    ʧ: "ch",
-    ər: "êr",
-    ɪ: "ih",
-    j: "y",
-    a: "a",
-    g: "g",
-    z: "z",
-    f: "f",
-    r: "r",
-    ɹ: "r",
-    w: "w",
-    o: "o",
-    ɑ: "aa",
-    ŋ: "ng",
-    ɚ: "er",
-    ð: "dh",
-    "/": " ou ",
-    ʒ: "zh",
-    ʃ: "sh",
-    ˈ: "ˈ",
-    ʤ: "j",
-  };
+    let wordEn = "";
 
-  for (const char of wordIPA) {
-    for (let letter in ipaToEn) {
-      if (letter == char) {
-        wordEn += ipaToEn[letter];
+    const ipaToEn = {
+      b: "b",
+      l: "l",
+      ʌ: "uh",
+      d: "d",
+      dʒ: "g",
+      θ: "th",
+      h: "rr",
+      e: "e",
+      æ: "a",
+      p: "p",
+      y: "i",
+      i: "ee",
+      aɪ: "ai",
+      oʊ: "ow",
+      ʊ: "uh",
+      aʊ: "au",
+      u: "uw",
+      ɔɪ: "ói",
+      ə: "á",
+      k: "k",
+      m: "m",
+      n: "n",
+      s: "s",
+      v: "v",
+      t: "t",
+      ɛ: "é",
+      ɔ: "ao",
+      ʧ: "ch",
+      ər: "êr",
+      ɪ: "ih",
+      j: "y",
+      a: "a",
+      g: "g",
+      z: "z",
+      f: "f",
+      r: "r",
+      ɹ: "r",
+      w: "w",
+      o: "o",
+      ɑ: "aa",
+      ŋ: "ng",
+      ɚ: "er",
+      ð: "dh",
+      "/": " ou ",
+      ʒ: "zh",
+      ʃ: "sh",
+      ˈ: "ˈ",
+      ʤ: "j",
+    };
+
+    for (const char of wordIPA) {
+      for (let letter in ipaToEn) {
+        if (letter == char) {
+          wordEn += ipaToEn[letter];
+        }
       }
     }
-  }
 
-  return wordEn;
+    return wordEn;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
 };
 
-module.exports = { findWord, translateWord };
+module.exports = { translateWord };
