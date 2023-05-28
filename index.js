@@ -12,13 +12,18 @@ app.use(bodyParser.json());
 
 // define path of static files
 app.use(express.static("public"));
+app.use(express.static("views"))
 
 app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/home", (req, res) =>{
+  res.render("../views/home.ejs")
+});
+
 app.use("/", routerSave);
 
 app.listen(port, () => {
-  console.log("server running...");
+  console.log(`server running... at localhost: ${port}`);
 });
