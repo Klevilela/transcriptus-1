@@ -1,0 +1,94 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Word transcription",
+        "description": "Api para fazer a transcrição da palavra em inglês",
+        "version":"1.0"
+    },
+    "servers":[
+        {
+            "url":"http://localhost:3000"
+        }
+    ],
+    "paths":{
+        "/":{
+            "get":{
+                "description":"Acessa a página de formulário para transcrição da palavra em inglês",
+                "text": "bla",
+                "requestBody":{
+                    "responses":{
+                        "200":{
+                            "description":"Ok"
+                        },
+                        "400":{
+                            "description":"Bad request"
+                        }
+                    }
+                }
+            }
+        },
+        "/text/save":{
+            "post":{
+                "description":"Retorna a transcrição da palavra(em inglês), imagem, sinônimos e contextos",
+                "tags":["Word"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/Word"
+                            }
+                        }
+                    },
+                    "responses":{
+                        "200":"Ok",
+                        "400":"Bad Request"
+                    }
+                },
+                "exemples":{
+                    "text":"hello"
+                }
+            }
+        },
+        "/home":{
+            "get":{
+                "description":"Acessa a página inical",
+                "requestBody":{}
+            }
+        },
+        "/verbete/{palavra}/xml":{
+            "get":{
+                "description":"É passado uma palavra e retorna o verbete dela em português",
+                "tags":["Word"],
+                "parameters":{
+                    
+                    "palavra":"palavra",
+                    "in":"query"
+                    
+                },
+                "responses":{
+                    "200":"Ok",
+                    "400":"Vebete não encontrado"
+                }
+            }
+        }
+
+    },
+    "components":{
+        "schemas":{
+            "Word":{
+                "type":"string",
+                "properties":{
+                    "text":{
+                        "type":"string"
+                    },
+                    "audio":{
+                        "type":"string"
+                    },
+                    "engWord":{
+                        "type":"string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@ const dictOp = require("../controllers/operationsController");
 const reverso = require("../controllers/reversoController");
 const gAudio = require("../controllers/audioController");
 
-router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 // router to save the transcription of word

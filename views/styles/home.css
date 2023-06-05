@@ -45,3 +45,9 @@ aside{
 }
 
 p{text-align: justify;}
+
+.text{text-align: center;}
+
+.secao{
+    align-content: center;
+}

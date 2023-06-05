@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <script src="./verbete.js" defer></script>
     
-
     <link rel="stylesheet" href="styles/home.css" type="text/css">
     <title>Home- Transcriptus</title>
 </head>
@@ -23,7 +23,7 @@
         </nav>
     </header>
     <main>
-        <h1>oi</h1>
+            
         <!--div>
             <aside>sdsda</aside>
         </div--->
@@ -49,7 +49,20 @@
                     Aliquid fugiat iusto eveniet, quo magni voluptatibus nisi deserunt hic?</p>
             </article>
         </section>
-
+        <div class='secao'>
+            <div class="container-fluid">
+                <h2 style="color: blue;">obter verbete da palavra</h1>
+                <input type="text" id="word_input" >
+                <button id="genarate_random_word" >Gerar Verbete</button>
+                <p id="verbete" style="font-size: 20px;justify-content: center;text-align: justify;"></p>
+            </div>
+        </div>
     </main>
+    <hr>
+    <footer>
+        <p class="text">Transcriptus - Todos os direitos reservados</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>

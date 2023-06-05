@@ -1,12 +1,10 @@
 const express = require("express");
 const app = express();
-const router = express.Router()
 const bodyParser = require("body-parser");
-const openai = require("./image/openaiController");
-const dictOp = require("./dict/operationsDict");
-const gAudio = require("./dict/audioGenerator");
-const { render } = require("ejs");
 const routerSave = require("./routes/save");
+const axios = require('axios')
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocs = require('./swagger.json')
 
 const port = process.env.PORT || 3000;
 
@@ -19,36 +17,43 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(express.static("views"))
 
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/home", function (req, res){
-  res.render(__dirname+"/home")
-})
-app.get("/login", function (req, res){
-  res.render("login")
+app.get('/home', function(req, res){
+  res.render("home");
 })
 
-/*app.get("/sing-in", function (req, res){
-  res.sendFile("register")
-})*/
-// router to save the transcription of word
-app.post("/text/save", async (req, res) => {
-  var text = req.body.text.toLowerCase();
-  var urlImage = await openai.generateImage(text);
+// Rota para a requisição do campo "xml" da API do Dicionário Aberto
+app.get('/verbete/:palavra/xml', (req, res) => {
+  const palavra = req.params.palavra;
+  const url = `https://api.dicionario-aberto.net/word/${palavra}`;
 
-  // generate audio
-  gAudio.generateAudio(text);
-  // traslating IPA to words
-  text = dictOp.findWord(text);
-  var engWord = dictOp.translateWord(text);
-
-  res.render("../views/transcripited/newText.ejs", {
-    text: text,
-    audioSrc: "../audio.mp3",
-    engWord: engWord,
-    urlImage: urlImage,
-  });
+  axios.get(url)
+    .then(response => {
+      if (response.data.length > 0) {
+        const entry = response.data[0];
+        if (entry.xml) {
+          const xml = entry.xml;
+          res.send(xml);
+        } else {
+          res.status(404).json({ error: 'Definição não encontrada para a palavra informada.' });
+        }
+      } else {
+        res.status(404).json({ error: 'Palavra não encontrada no dicionário.' });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ error: 'Erro ao obter a definição da palavra.' });
+    });
 });
 
+
+app.use("/", routerSave);
+
+app.listen(port, () => {
+  console.log(`server running at http://localhost:3000`);
+});
