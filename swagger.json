@@ -1,94 +1,115 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "title": "Word transcription",
-        "description": "Api para fazer a transcrição da palavra em inglês",
-        "version":"1.0"
-    },
-    "servers":[
-        {
-            "url":"http://localhost:3000"
-        }
-    ],
-    "paths":{
-        "/":{
-            "get":{
-                "description":"Acessa a página de formulário para transcrição da palavra em inglês",
-                "text": "bla",
-                "requestBody":{
-                    "responses":{
-                        "200":{
-                            "description":"Ok"
-                        },
-                        "400":{
-                            "description":"Bad request"
-                        }
-                    }
-                }
-            }
-        },
-        "/text/save":{
-            "post":{
-                "description":"Retorna a transcrição da palavra(em inglês), imagem, sinônimos e contextos",
-                "tags":["Word"],
-                "requestBody":{
-                    "content":{
-                        "application/json":{
-                            "schema":{
-                                "$ref":"#/components/schemas/Word"
-                            }
-                        }
-                    },
-                    "responses":{
-                        "200":"Ok",
-                        "400":"Bad Request"
-                    }
-                },
-                "exemples":{
-                    "text":"hello"
-                }
-            }
-        },
-        "/home":{
-            "get":{
-                "description":"Acessa a página inical",
-                "requestBody":{}
-            }
-        },
-        "/verbete/{palavra}/xml":{
-            "get":{
-                "description":"É passado uma palavra e retorna o verbete dela em português",
-                "tags":["Word"],
-                "parameters":{
-                    
-                    "palavra":"palavra",
-                    "in":"query"
-                    
-                },
-                "responses":{
-                    "200":"Ok",
-                    "400":"Vebete não encontrado"
-                }
-            }
-        }
-
-    },
-    "components":{
-        "schemas":{
-            "Word":{
-                "type":"string",
-                "properties":{
-                    "text":{
-                        "type":"string"
-                    },
-                    "audio":{
-                        "type":"string"
-                    },
-                    "engWord":{
-                        "type":"string"
-                    }
-                }
-            }
-        }
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Transcriptus",
+    "description": "Api para fazer a transcrição da palavra em inglês além dos endpoints do projeto",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
     }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Rota do formulário de transcrição",
+        "description": "Essa rota acessa a página para digitar uma palavra",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "index",
+        "operationId": "renderIndex"
+      }
+    },
+    "/home": {
+      "get": {
+        "summary": "Rota da página inicial",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "home",
+        "operationId": "renderHome"
+      }
+    },
+    "/text/save": {
+      "post": {
+        "summary": "Rota para salvar a transcrição de uma palavra",
+        "description":"Retorna uma página renderizada com caracterísitcas da palavra como audio, transcrição, frases etc",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "audio": {
+                      "type": "string"
+                    },
+                    "engWord": {
+                      "type": "string"
+                    },
+                    "urlImage": {
+                      "type": "string"
+                    },
+                    "phrases": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "originalText": {
+                      "type": "string"
+                    },
+                    "translation": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-swagger-router-controller": "saveText",
+        "operationId": "saveTranscription"
+      }
+    }
+  }
 }
