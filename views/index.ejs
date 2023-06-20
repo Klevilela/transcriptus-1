@@ -1,0 +1,70 @@
+<%- include("./partials/header.ejs") %>
+<%- include("./partials/navbar.ejs") %>
+  <body>
+    <div class="container my-5">
+      <div class="card shadow-lg">
+        <div class="card-header bg-success text-white">
+          <h3 class="animate__animated animate__fadeInDown">
+            Mostrar pronúncia da palavra
+          </h3>
+        </div>
+
+        <div class="card-body">
+          <form method="POST" action="/text/save" class="text-center">
+            <div class="form-group">
+              <div class="input-group">
+                <input
+                  name="text"
+                  id="texto"
+                  class="form-control animate__animated animate__fadeInUp"
+                  placeholder="Digite o texto aqui"
+                  required
+                ></input>
+                <div class="invalid-feedback">
+                  Por favor, insira um texto para resumir.
+                </div>
+                <div class="input-group-append">
+                  <button class="btn btn-success" type="submit">
+                    <span
+                      class="spinner-border spinner-border-sm mr-2 d-none"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Exibir Pronúncia
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-center d-none" id="success-message">
+          <div class="alert alert-success mb-0">
+            Texto transcrito com sucesso!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+      const form = document.querySelector("form");
+      const spinner = document.querySelector(".spinner-border");
+      const successMessage = document.querySelector("#success-message");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        spinner.classList.remove("d-none");
+
+        setTimeout(() => {
+          spinner.classList.add("d-none");
+          successMessage.classList.remove("d-none");
+          setTimeout(() => {
+            form.submit();
+          }, 1500);
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
